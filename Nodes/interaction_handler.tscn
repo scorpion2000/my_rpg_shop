@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bry3s8hdiraox"]
+
+[ext_resource type="Script" path="res://scripts/Interactable.cs" id="1_8rc46"]
+
+[node name="InteractionHandler" type="Node" node_paths=PackedStringArray("animPlayer", "interactionSprite")]
+script = ExtResource("1_8rc46")
+animPlayer = NodePath("")
+interactionSprite = NodePath("")

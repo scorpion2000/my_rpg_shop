@@ -1,0 +1,8 @@
+{
+	"2000": {
+		"SpawnTimer": 10,
+		"MobID": 1,
+		"MaxMobs": 5,
+		"Sprite": "Sprites/Items/crate.png"
+	}
+}

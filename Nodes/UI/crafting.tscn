@@ -1,0 +1,214 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3sa7w7400fat"]
+
+[ext_resource type="Script" path="res://scripts/UI/CraftingUiController.cs" id="1_4pk6t"]
+[ext_resource type="PackedScene" uid="uid://hxvfi6lk0qsn" path="res://Nodes/UI/crafting_craftable.tscn" id="1_pmu7i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ru31"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_u15tf"]
+font_size = 12
+
+[sub_resource type="ImageTexture" id="ImageTexture_emg16"]
+
+[node name="Crafting" type="Control" node_paths=PackedStringArray("craftReqBoxes", "craftableContainer", "craftableSelectionLabel", "craftableSelectionTexture", "volumeInput", "simpleCraftButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4pk6t")
+craftReqBoxes = [NodePath("Panel/Control/GridContainer/VBoxContainer"), NodePath("Panel/Control/GridContainer/VBoxContainer2"), NodePath("Panel/Control/GridContainer/VBoxContainer3")]
+craftableContainer = NodePath("Panel/CraftableContainer")
+craftableItem = ExtResource("1_pmu7i")
+craftableSelectionLabel = NodePath("Panel/Control/CraftableName")
+craftableSelectionTexture = NodePath("Panel/Control/TextureRect")
+volumeInput = NodePath("Panel/Control/SpinBox")
+simpleCraftButton = NodePath("Panel/Control/Button")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CraftableContainer" type="GridContainer" parent="Panel"]
+custom_minimum_size = Vector2(280, 460)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 284.0
+offset_bottom = 480.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Control" type="Control" parent="Panel"]
+custom_minimum_size = Vector2(280, 460)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 480.0
+grow_horizontal = 0
+
+[node name="CraftableName" type="Label" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Select an item"
+label_settings = SubResource("LabelSettings_4ru31")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -180.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label" type="Label" parent="Panel/Control/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_u15tf")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Control/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+expand_mode = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label" type="Label" parent="Panel/Control/GridContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_u15tf")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Control/GridContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+expand_mode = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label" type="Label" parent="Panel/Control/GridContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_u15tf")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Control/GridContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+expand_mode = 4
+
+[node name="Panel" type="Panel" parent="Panel/Control/GridContainer"]
+custom_minimum_size = Vector2(10, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel2" type="Panel" parent="Panel/Control/GridContainer"]
+custom_minimum_size = Vector2(10, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel3" type="Panel" parent="Panel/Control/GridContainer"]
+custom_minimum_size = Vector2(10, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 252.0
+offset_right = 80.0
+offset_bottom = 292.0
+scale = Vector2(5, 0.24)
+
+[node name="Panel2" type="Panel" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 261.0
+offset_right = 175.0
+offset_bottom = 321.0
+scale = Vector2(0.23999, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 333.0
+offset_right = 160.0
+offset_bottom = 373.0
+expand_mode = 2
+
+[node name="Button" type="Button" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 381.0
+offset_right = 237.0
+offset_bottom = 412.0
+text = "Simple Craft"
+
+[node name="SpinBox" type="SpinBox" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 381.0
+offset_right = 130.063
+offset_bottom = 412.0
+theme_override_icons/updown = SubResource("ImageTexture_emg16")
+min_value = 1.0
+value = 1.0
+rounded = true
+alignment = 2
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -41.0
+offset_right = 18.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit"
+
+[connection signal="pressed" from="Panel/Button" to="." method="ExitButton"]

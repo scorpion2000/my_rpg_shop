@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvo14s4u2h5ht"]
+
+[ext_resource type="Script" path="res://scripts/UI/AiDebugHandler.cs" id="1_ymstw"]
+
+[node name="GridContainer" type="GridContainer"]
+z_index = 100
+texture_filter = 1
+layout_direction = 1
+offset_right = 210.0
+offset_bottom = 26.0
+columns = 10
+script = ExtResource("1_ymstw")
+
+[node name="CharacterName" type="Label" parent="."]
+layout_mode = 2
+text = "Name:"
+
+[node name="Target" type="Label" parent="."]
+layout_mode = 2
+text = "Target:"
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 2
+text = "Health:"
+
+[node name="State" type="Label" parent="."]
+layout_mode = 2
+text = "State:"
+
+[node name="BrainAction" type="Label" parent="."]
+layout_mode = 2
+text = "Action:"
+
+[node name="Lair" type="Label" parent="."]
+layout_mode = 2
+text = "Lair:"
+
+[node name="Inventory" type="Label" parent="."]
+layout_mode = 2
+text = "Inventory:"
+
+[node name="Gold" type="Label" parent="."]
+layout_mode = 2
+text = "Gold:"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="Button" to="." method="OnDebugClose"]

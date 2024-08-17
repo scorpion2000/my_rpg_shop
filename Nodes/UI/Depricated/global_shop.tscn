@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjbw4vcfba4k"]
+
+[ext_resource type="Script" path="res://scripts/GlobalShop.cs" id="1_2vd8c"]
+[ext_resource type="PackedScene" uid="uid://dvtloaji5b7im" path="res://Nodes/UI/Depricated/global_item.tscn" id="2_8tmek"]
+[ext_resource type="Texture2D" uid="uid://cp8f06258xouw" path="res://Sprites/UI/Text_Background.png" id="3_egvxf"]
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(201, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -200.0
+offset_right = 96.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2vd8c")
+uiItem = ExtResource("2_8tmek")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Title" type="GridContainer" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer/Title"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("3_egvxf")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Title/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/GridContainer/Title"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("3_egvxf")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Title/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Count"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ScrollContainer/GridContainer/Title"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("3_egvxf")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Title/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BuyPrice"
+horizontal_alignment = 1
+vertical_alignment = 1

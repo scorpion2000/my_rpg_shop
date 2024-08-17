@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=3 uid="uid://daufveqld8dfi"]
+
+[ext_resource type="Texture2D" uid="uid://c8itt1351orql" path="res://Sprites/NPC/Elf/elf_m_hit_anim_f0.png" id="1_0bdl4"]
+[ext_resource type="Script" path="res://scripts_v2/PlayerController.cs" id="1_1o05l"]
+[ext_resource type="Texture2D" uid="uid://2h871i5ha2uy" path="res://Sprites/NPC/Elf/elf_m_idle_anim_f0.png" id="2_01ryd"]
+[ext_resource type="Texture2D" uid="uid://c0ddr33b4g04f" path="res://Sprites/NPC/Elf/elf_m_idle_anim_f1.png" id="3_hls5g"]
+[ext_resource type="Texture2D" uid="uid://cyqb2yf07wxh7" path="res://Sprites/NPC/Elf/elf_m_idle_anim_f2.png" id="4_sgqle"]
+[ext_resource type="Texture2D" uid="uid://ck543ajvwrnq2" path="res://Sprites/NPC/Elf/elf_m_idle_anim_f3.png" id="5_x446o"]
+[ext_resource type="Texture2D" uid="uid://yseqmoqio00h" path="res://Sprites/NPC/Elf/elf_m_run_anim_f0.png" id="6_fgtpl"]
+[ext_resource type="Texture2D" uid="uid://bw3bl3ao8nw1p" path="res://Sprites/NPC/Elf/elf_m_run_anim_f1.png" id="7_t8oq2"]
+[ext_resource type="Texture2D" uid="uid://b4kqcob6xpde0" path="res://Sprites/NPC/Elf/elf_m_run_anim_f2.png" id="8_rlf6p"]
+[ext_resource type="Texture2D" uid="uid://b2kwrhc8hydvl" path="res://Sprites/NPC/Elf/elf_m_run_anim_f3.png" id="9_hewn5"]
+[ext_resource type="PackedScene" uid="uid://csgk3qrp08cq" path="res://Nodes/AIComponents/health.tscn" id="11_a87f3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enoui"]
+radius = 5.52268
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1igu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0bdl4")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_01ryd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hls5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sgqle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x446o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fgtpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t8oq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rlf6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hewn5")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 11.0
+}]
+
+[sub_resource type="Animation" id="Animation_n6mbp"]
+resource_name = "damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.5, 1.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AnimReset"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uieh2"]
+_data = {
+"damaged": SubResource("Animation_n6mbp")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rcuqx"]
+properties/0/path = NodePath(".:syncPosition")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j782v"]
+radius = 25.0
+
+[node name="ElfPc" type="CharacterBody2D" node_paths=PackedStringArray("visionArea", "bodyAnimation", "animationPlayer", "multiSync") groups=["Player"]]
+light_mask = 2
+visibility_layer = 3
+collision_layer = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_1o05l")
+visionArea = NodePath("VisionArea")
+bodyAnimation = NodePath("AnimatedSprite2D")
+animationPlayer = NodePath("AnimationPlayer")
+multiSync = NodePath("MultiplayerSynchronizer")
+metadata/team = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_enoui")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p1igu")
+animation = &"Idle"
+
+[node name="Health" parent="." instance=ExtResource("11_a87f3")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uieh2")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.1
+delta_interval = 0.1
+replication_config = SubResource("SceneReplicationConfig_rcuqx")
+public_visibility = false
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = -11.0
+offset_top = -17.0
+offset_right = 29.0
+offset_bottom = 9.0
+scale = Vector2(0.5, 0.5)
+text = "Test"
+horizontal_alignment = 1
+
+[node name="VisionArea" type="Area2D" parent="."]
+position = Vector2(0, 5)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
+shape = SubResource("CircleShape2D_j782v")
+
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="VisionTimer" to="." method="LookForInteractable"]

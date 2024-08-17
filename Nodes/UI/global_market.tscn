@@ -1,0 +1,250 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu7f5o6u7mokl"]
+
+[ext_resource type="PackedScene" uid="uid://db6c1et1te8hl" path="res://Nodes/UI/global_shop_item.tscn" id="1_7oh7h"]
+[ext_resource type="Script" path="res://scripts_v2/UI/GlobalMarket.cs" id="1_y3ptc"]
+
+[node name="GlobalMarket" type="CanvasLayer" node_paths=PackedStringArray("commonContainer", "weaponContainer", "armorContainer", "consumableContainer", "searchButton", "searchInput", "autoSearch", "updateTimer", "timerText")]
+script = ExtResource("1_y3ptc")
+itemScene = ExtResource("1_7oh7h")
+commonContainer = NodePath("Test_UI/Panel/GridContainer/Common/ScrollContainer/VBoxContainer")
+weaponContainer = NodePath("Test_UI/Panel/GridContainer/Weapons/ScrollContainer2/VBoxContainer")
+armorContainer = NodePath("Test_UI/Panel/GridContainer/Armor/ScrollContainer3/VBoxContainer")
+consumableContainer = NodePath("Test_UI/Panel/GridContainer/Consumables/ScrollContainer4/VBoxContainer")
+searchButton = NodePath("Test_UI/Panel/Panel/Control/Button")
+searchInput = NodePath("Test_UI/Panel/Panel/Control/LineEdit")
+autoSearch = NodePath("Test_UI/Panel/Panel/Control/CheckBox")
+updateTimer = NodePath("MarketUpdate")
+timerText = NodePath("Test_UI/Panel/Panel/TimeLeft")
+
+[node name="Test_UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Test_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Test_UI/Panel"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="Test_UI/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 190.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="LineEdit" type="LineEdit" parent="Test_UI/Panel/Panel/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.5
+offset_right = 100.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Item Search"
+
+[node name="Button" type="Button" parent="Test_UI/Panel/Panel/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+text = "Search"
+
+[node name="CheckBox" type="CheckBox" parent="Test_UI/Panel/Panel/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 65.0
+offset_bottom = 15.5
+grow_vertical = 2
+focus_mode = 0
+button_pressed = true
+text = "Auto"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Test_UI/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 140.0
+offset_bottom = 12.0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Global Market[/center]"
+
+[node name="TimeLeft" type="RichTextLabel" parent="Test_UI/Panel/Panel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]10:00"
+
+[node name="GridContainer" type="GridContainer" parent="Test_UI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -560.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 4
+
+[node name="Common" type="GridContainer" parent="Test_UI/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Control" parent="Test_UI/Panel/GridContainer/Common"]
+custom_minimum_size = Vector2(247, 30)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Test_UI/Panel/GridContainer/Common/Title"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "[center]Common[/center]"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Test_UI/Panel/GridContainer/Common"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Test_UI/Panel/GridContainer/Common/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Weapons" type="GridContainer" parent="Test_UI/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Control" parent="Test_UI/Panel/GridContainer/Weapons"]
+custom_minimum_size = Vector2(247, 30)
+layout_mode = 2
+
+[node name="Weapons" type="RichTextLabel" parent="Test_UI/Panel/GridContainer/Weapons/Title"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "[center]Weapons[/center]"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Test_UI/Panel/GridContainer/Weapons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Test_UI/Panel/GridContainer/Weapons/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Armor" type="GridContainer" parent="Test_UI/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Control" parent="Test_UI/Panel/GridContainer/Armor"]
+custom_minimum_size = Vector2(247, 30)
+layout_mode = 2
+
+[node name="Armor" type="RichTextLabel" parent="Test_UI/Panel/GridContainer/Armor/Title"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "[center]Armor[/center]"
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="Test_UI/Panel/GridContainer/Armor"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Test_UI/Panel/GridContainer/Armor/ScrollContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Consumables" type="GridContainer" parent="Test_UI/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Control" parent="Test_UI/Panel/GridContainer/Consumables"]
+custom_minimum_size = Vector2(247, 30)
+layout_mode = 2
+
+[node name="Consumable" type="RichTextLabel" parent="Test_UI/Panel/GridContainer/Consumables/Title"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "[center]Consumable[/center]"
+
+[node name="ScrollContainer4" type="ScrollContainer" parent="Test_UI/Panel/GridContainer/Consumables"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Test_UI/Panel/GridContainer/Consumables/ScrollContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarketUpdate" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+autostart = true
+
+[connection signal="text_changed" from="Test_UI/Panel/Panel/Control/LineEdit" to="." method="AutoSearch"]
+[connection signal="text_submitted" from="Test_UI/Panel/Panel/Control/LineEdit" to="." method="Search"]

@@ -1,0 +1,352 @@
+[gd_scene load_steps=29 format=3 uid="uid://cf3p2hd4ckilf"]
+
+[ext_resource type="PackedScene" uid="uid://bot0d0g7cqgm0" path="res://Nodes/terrain.tscn" id="3_ve5y8"]
+[ext_resource type="Script" path="res://scripts_v2/UI/UiShopObjectController.cs" id="4_6iuiy"]
+[ext_resource type="PackedScene" uid="uid://bvo14s4u2h5ht" path="res://Nodes/DebugUI.tscn" id="4_uvxqf"]
+[ext_resource type="Texture2D" uid="uid://cu1m1xaphw8h8" path="res://Sprites/UI/market.png" id="5_mepwx"]
+[ext_resource type="Texture2D" uid="uid://drkiwrgq35s5h" path="res://Sprites/UI/storefront_icon.png" id="6_hn07t"]
+[ext_resource type="Texture2D" uid="uid://xld1vuh28qhy" path="res://Sprites/UI/storeArmory_icon.png" id="7_t8gvt"]
+[ext_resource type="PackedScene" uid="uid://d354i7mfkftsr" path="res://Nodes/UI/shopInfoPanel.tscn" id="9_qqqlm"]
+[ext_resource type="PackedScene" uid="uid://bxktvwusu6ivb" path="res://Nodes/UI/Depricated/trade_manager.tscn" id="10_0kuup"]
+[ext_resource type="Texture2D" uid="uid://bwa0kg1nuoasn" path="res://Sprites/Items/Coin/coin_anim_f0.png" id="11_inshr"]
+[ext_resource type="Texture2D" uid="uid://wsisnohv2v2h" path="res://Sprites/Items/Coin/coin_anim_f1.png" id="12_v13h5"]
+[ext_resource type="Texture2D" uid="uid://d1yb4uw55cvmd" path="res://Sprites/Items/Coin/coin_anim_f2.png" id="13_cjjpb"]
+[ext_resource type="PackedScene" uid="uid://ceawug236kiiq" path="res://Nodes/UI/chat_panel.tscn" id="13_l61q3"]
+[ext_resource type="Texture2D" uid="uid://b8ja480q2aplt" path="res://Sprites/Items/Coin/coin_anim_f3.png" id="14_rlm0n"]
+[ext_resource type="PackedScene" uid="uid://b3sa7w7400fat" path="res://Nodes/UI/crafting.tscn" id="15_sgujk"]
+[ext_resource type="PackedScene" uid="uid://cm6oposft6638" path="res://Nodes/jip_sync_handler.tscn" id="16_h8mnr"]
+[ext_resource type="PackedScene" uid="uid://csjtfs3kl70rd" path="res://Nodes/shop_front.tscn" id="19_06bw3"]
+[ext_resource type="PackedScene" uid="uid://bph5xmv7nxohd" path="res://Nodes/MobSpawners/lizard_spawner.tscn" id="21_0ryhu"]
+[ext_resource type="PackedScene" uid="uid://dxa6kuqa0w636" path="res://Nodes/UI/player_shopfront.tscn" id="22_3vh27"]
+[ext_resource type="PackedScene" uid="uid://oc6cdiptyl7v" path="res://Nodes/Mobs/hero_generic.tscn" id="30_ssr5f"]
+[ext_resource type="PackedScene" uid="uid://cu72xten5e7b0" path="res://Nodes/Mobs/monster_generic.tscn" id="31_b8skw"]
+[ext_resource type="PackedScene" uid="uid://cu7f5o6u7mokl" path="res://Nodes/UI/global_market.tscn" id="34_g4ofa"]
+[ext_resource type="PackedScene" uid="uid://ctshfka2g7wg5" path="res://Nodes/sign.tscn" id="39_3v0vg"]
+[ext_resource type="Script" path="res://scripts_v2/SpawnManager.cs" id="40_t7r4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhrmp"]
+atlas = ExtResource("6_hn07t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_7ey3v"]
+frames = 4
+speed_scale = 8.0
+frame_0/texture = ExtResource("11_inshr")
+frame_1/texture = ExtResource("12_v13h5")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("13_cjjpb")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("14_rlm0n")
+frame_3/duration = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4bl8"]
+size = Vector2(400, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t55u8"]
+size = Vector2(178, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s80cg"]
+size = Vector2(97, 95)
+
+[node name="World" type="Node2D"]
+position = Vector2(0, 1)
+
+[node name="Terrain" parent="." instance=ExtResource("3_ve5y8")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="FocusGrabber" type="Control" parent="ParallaxBackground"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" parent="ParallaxBackground" instance=ExtResource("4_uvxqf")]
+visible = false
+
+[node name="GlobalShopButton" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("5_mepwx")
+flat = true
+expand_icon = true
+
+[node name="CreateShopfront" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -48.0
+offset_right = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = SubResource("AtlasTexture_mhrmp")
+flat = true
+expand_icon = true
+
+[node name="CreateShopArmory" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -48.0
+offset_right = -129.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("7_t8gvt")
+flat = true
+expand_icon = true
+
+[node name="ShopObjectController" type="Control" parent="ParallaxBackground" node_paths=PackedStringArray("ShopfrontButton")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_6iuiy")
+ShopfrontButton = NodePath("../CreateShopfront")
+
+[node name="TradeManager" parent="ParallaxBackground" instance=ExtResource("10_0kuup")]
+visible = false
+
+[node name="CoinDisplay" type="BoxContainer" parent="ParallaxBackground"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 32.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Money" type="Label" parent="ParallaxBackground/CoinDisplay"]
+layout_mode = 2
+text = "123456789"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/CoinDisplay"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_7ey3v")
+expand_mode = 2
+
+[node name="ArmoryCrafting" parent="ParallaxBackground" instance=ExtResource("15_sgujk")]
+visible = false
+craftableItems = PackedInt32Array(2, 5, 8, 9, 11)
+
+[node name="ChatPanel" parent="ParallaxBackground" instance=ExtResource("13_l61q3")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -165.0
+offset_right = 95.0
+offset_bottom = -15.0
+grow_vertical = 0
+
+[node name="Home" type="Node2D" parent="."]
+position = Vector2(122, 178)
+
+[node name="HomeWanderArea" type="Area2D" parent="Home"]
+position = Vector2(-24, -102)
+collision_layer = 7
+collision_mask = 7
+monitoring = false
+
+[node name="WanderAreaColl" type="CollisionShape2D" parent="Home/HomeWanderArea"]
+position = Vector2(93, 100)
+shape = SubResource("RectangleShape2D_k4bl8")
+
+[node name="0" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(-76, 126)
+
+[node name="1" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(69, 124)
+
+[node name="2" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(212, 127)
+
+[node name="3" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(-76, -129)
+
+[node name="4" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(64, -129)
+
+[node name="5" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(214, -129)
+
+[node name="MobSpawnLocs" type="Node2D" parent="."]
+position = Vector2(805, 170)
+
+[node name="Area1" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-530, 364)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area1"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area2" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-57, -76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area2"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area3" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-18, 278)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area3"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area4" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(403, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area4"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area5" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(465, -68)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area5"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area6" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(453, 546)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area6"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area7" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-184, 567)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area7"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Shops" type="Node" parent="."]
+
+[node name="ShopSign1" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(43, 238)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign1"]
+position = Vector2(1, 69)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign1/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign2" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(192, 238)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign2"]
+position = Vector2(-3, 69)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign2/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign3" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(344, 238)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign3"]
+position = Vector2(-12, 69)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign3/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign4" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(43, 109)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign4"]
+position = Vector2(289, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign4/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign5" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(192, 109)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign5"]
+position = Vector2(-3, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign5/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign6" parent="Shops" instance=ExtResource("39_3v0vg")]
+position = Vector2(344, 109)
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign6"]
+position = Vector2(-300, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign6/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="GlobalMarketPos" type="Node2D" parent="."]
+position = Vector2(2, 208)
+
+[node name="GlobalFleePosition" type="Node2D" parent="."]
+position = Vector2(20, 146)
+
+[node name="JipSyncHandler" parent="." instance=ExtResource("16_h8mnr")]
+HeroType = ExtResource("30_ssr5f")
+MonsterType = ExtResource("31_b8skw")
+SpawnerType = ExtResource("21_0ryhu")
+ShopFront = ExtResource("19_06bw3")
+
+[node name="SpawnManager" type="Node" parent="."]
+script = ExtResource("40_t7r4y")
+
+[node name="MonsterLairCountdown" type="Timer" parent="SpawnManager"]
+wait_time = 4.0
+autostart = true
+
+[node name="HeroSpawnCountdown" type="Timer" parent="SpawnManager"]
+wait_time = 2.0
+autostart = true
+
+[node name="GlobalMarket" parent="." node_paths=PackedStringArray("toggleButton") instance=ExtResource("34_g4ofa")]
+visible = false
+toggleButton = NodePath("../ParallaxBackground/GlobalShopButton")
+
+[node name="PlayerShopfront" parent="." instance=ExtResource("22_3vh27")]
+visible = false
+
+[node name="ShopInfoPanel" parent="." instance=ExtResource("9_qqqlm")]
+visible = false
+
+[connection signal="body_entered" from="Home/HomeWanderArea" to="." method="AreaTestFunc"]
+[connection signal="timeout" from="SpawnManager/MonsterLairCountdown" to="SpawnManager" method="OnMobLairTimer"]
+[connection signal="timeout" from="SpawnManager/HeroSpawnCountdown" to="SpawnManager" method="OnHeroTimer"]

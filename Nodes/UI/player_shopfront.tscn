@@ -1,0 +1,269 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxa6kuqa0w636"]
+
+[ext_resource type="Script" path="res://scripts_v2/UI/ShopFront.cs" id="1_n50vb"]
+[ext_resource type="PackedScene" uid="uid://dbsbpnuqe7fon" path="res://Nodes/UI/player_shopFront_searchItem.tscn" id="2_dqve2"]
+[ext_resource type="Texture2D" uid="uid://bhkuk55w2rnvt" path="res://Sprites/UI/search.png" id="3_o3p30"]
+[ext_resource type="PackedScene" uid="uid://csb1m2a4hp2xv" path="res://Nodes/UI/shopfront_item.tscn" id="4_2yfah"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjdjg"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.890196, 0.890196, 0.890196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8stp"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.968627, 0.968627, 0.968627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vnx0"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.733333, 0.733333, 0.733333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sajnh"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.717647, 0.0823529, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PlayerShopfront" type="CanvasLayer" node_paths=PackedStringArray("SearchScrollContainer", "PurchasesScrollContainer", "SalesScrollContainer", "searchSearchInput", "searchAutoSearch", "searchSearchButton", "frontSearchInput", "frontAutoSearch", "frontSearchButton", "exitButton")]
+script = ExtResource("1_n50vb")
+ShopFrontSearchItem = ExtResource("2_dqve2")
+ShopFrontItem = ExtResource("4_2yfah")
+SearchScrollContainer = NodePath("Control/Addition/ScrollContainer/VBoxContainer")
+PurchasesScrollContainer = NodePath("Control/ShopFront/PurchaseBox/VBoxContainer")
+SalesScrollContainer = NodePath("Control/ShopFront/SellBox/VBoxContainer")
+searchSearchInput = NodePath("Control/Addition/SearchBar/HBoxContainer/LineEdit")
+searchAutoSearch = NodePath("Control/Addition/SearchBar/HBoxContainer/CheckBox")
+searchSearchButton = NodePath("Control/Addition/SearchBar/HBoxContainer/Button")
+frontSearchInput = NodePath("Control/ShopFront/SearchBar/HBoxContainer/LineEdit")
+frontAutoSearch = NodePath("Control/ShopFront/SearchBar/HBoxContainer/CheckBox")
+frontSearchButton = NodePath("Control/ShopFront/SearchBar/HBoxContainer/Button")
+exitButton = NodePath("Control/ShopFront/SearchBar/ExitButton")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopFront" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -300.0
+offset_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SearchBar" type="Panel" parent="Control/ShopFront"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ShopFront/SearchBar"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 240.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="CheckBox" type="CheckBox" parent="Control/ShopFront/SearchBar/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Auto"
+
+[node name="LineEdit" type="LineEdit" parent="Control/ShopFront/SearchBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Item Name Here"
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="Control/ShopFront/SearchBar/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yjdjg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g8stp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7vnx0")
+icon = ExtResource("3_o3p30")
+
+[node name="Title" type="RichTextLabel" parent="Control/ShopFront/SearchBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_right = 300.0
+offset_bottom = 13.0
+grow_vertical = 2
+bbcode_enabled = true
+text = " Your Shopfront"
+
+[node name="ExitButton" type="Button" parent="Control/ShopFront/SearchBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 29
+theme_override_styles/normal = SubResource("StyleBoxFlat_sajnh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sajnh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sajnh")
+text = "X"
+
+[node name="PurchaseLabel" type="RichTextLabel" parent="Control/ShopFront"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 340.0
+offset_bottom = 85.0
+bbcode_enabled = true
+text = "[center]Purchases"
+
+[node name="PurchaseBox" type="ScrollContainer" parent="Control/ShopFront"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -510.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ShopFront/PurchaseBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SaleLabel" type="RichTextLabel" parent="Control/ShopFront"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 0
+offset_left = 360.0
+offset_top = 45.0
+offset_right = 690.0
+offset_bottom = 85.0
+bbcode_enabled = true
+text = "[center]Sales"
+
+[node name="SellBox" type="ScrollContainer" parent="Control/ShopFront"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -510.0
+offset_right = 340.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ShopFront/SellBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Addition" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -300.0
+offset_right = 275.0
+offset_bottom = 300.0
+grow_vertical = 2
+
+[node name="SearchBar" type="Panel" parent="Control/Addition"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Addition/SearchBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="Control/Addition/SearchBar/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Auto"
+
+[node name="LineEdit" type="LineEdit" parent="Control/Addition/SearchBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Item Name Here"
+
+[node name="Button" type="Button" parent="Control/Addition/SearchBar/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_yjdjg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g8stp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7vnx0")
+icon = ExtResource("3_o3p30")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Addition"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.5
+offset_top = -550.0
+offset_right = 112.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Addition/ScrollContainer"]
+layout_mode = 2

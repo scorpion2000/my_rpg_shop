@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0w84lf0ebced"]
+
+[ext_resource type="Script" path="res://scripts_v2/UI/ShopInfoItem.cs" id="1_7fnko"]
+[ext_resource type="Texture2D" uid="uid://clumfdujxb0dj" path="res://Sprites/Items/Loot/basic_potion_1.png" id="1_ianbr"]
+[ext_resource type="Texture2D" uid="uid://bwa0kg1nuoasn" path="res://Sprites/Items/Coin/coin_anim_f0.png" id="2_8u8dn"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("sprite", "itemName", "itemPriceText")]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7fnko")
+sprite = NodePath("HBoxContainer/TextureRect")
+itemName = NodePath("HBoxContainer/RichTextLabel")
+itemPriceText = NodePath("HBoxContainer/Price Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = ExtResource("1_ianbr")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "very long item name"
+
+[node name="Price Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "999999999"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = ExtResource("2_8u8dn")
+expand_mode = 2

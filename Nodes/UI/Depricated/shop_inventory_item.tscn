@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbrd8wn6wr3xa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvdcr"]
+font_size = 10
+
+[node name="Title" type="GridContainer"]
+offset_right = 123.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+columns = 3
+
+[node name="Item Texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 4
+
+[node name="Item Name" type="Label" parent="."]
+custom_minimum_size = Vector2(65, 24)
+layout_mode = 2
+text = "Item Name"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Item Name2" type="Label" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Count"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

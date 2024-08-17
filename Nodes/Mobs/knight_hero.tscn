@@ -1,0 +1,289 @@
+[gd_scene load_steps=24 format=3 uid="uid://bb2a1c3daqam7"]
+
+[ext_resource type="Script" path="res://scripts_v2/AI/Brain.cs" id="1_ryl4w"]
+[ext_resource type="Texture2D" uid="uid://6onatpswvxjm" path="res://Sprites/NPC/Knight/knight_m_hit_anim_f0.png" id="2_se8p0"]
+[ext_resource type="Texture2D" uid="uid://cyy40e17ekcg3" path="res://Sprites/NPC/Knight/idle/0.png" id="3_v284g"]
+[ext_resource type="Texture2D" uid="uid://cs27drsiwggqh" path="res://Sprites/NPC/Knight/idle/1.png" id="4_kcqtd"]
+[ext_resource type="Texture2D" uid="uid://bcy4qsn0suhe" path="res://Sprites/NPC/Knight/idle/2.png" id="5_iq4tl"]
+[ext_resource type="Texture2D" uid="uid://ntjpwsdd144l" path="res://Sprites/NPC/Knight/idle/3.png" id="6_fmois"]
+[ext_resource type="Texture2D" uid="uid://ceef1rmme77rg" path="res://Sprites/NPC/Knight/run/0.png" id="7_etfax"]
+[ext_resource type="Texture2D" uid="uid://du7hjac4mfgah" path="res://Sprites/NPC/Knight/run/1.png" id="8_sybi6"]
+[ext_resource type="Texture2D" uid="uid://d3p5al7s5nq5i" path="res://Sprites/NPC/Knight/run/2.png" id="9_34j6s"]
+[ext_resource type="Texture2D" uid="uid://c3i4c7p3067ds" path="res://Sprites/NPC/Knight/run/3.png" id="10_ohmqa"]
+[ext_resource type="Script" path="res://scripts_v2/AI/Components/AiVision.cs" id="11_7n5ec"]
+[ext_resource type="PackedScene" uid="uid://csgk3qrp08cq" path="res://Nodes/AIComponents/health.tscn" id="11_v5yak"]
+[ext_resource type="Texture2D" uid="uid://bcliv88x26ea7" path="res://Sprites/Items/Weapons/weapon_anime_sword.png" id="12_vf03g"]
+[ext_resource type="Script" path="res://scripts_v2/AI/Components/Movement.cs" id="13_0se4r"]
+[ext_resource type="Script" path="res://scripts_v2/AI/Components/Inventory.cs" id="14_bxpsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtlbt"]
+radius = 6.5
+
+[sub_resource type="Animation" id="Animation_35k5h"]
+resource_name = "attackAnimL"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2.82843, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2.21914, 0.517632, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s2wly"]
+resource_name = "attackAnimR"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2.82843, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(2.21914, 0.517632, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponHolder:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1.86607, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, -1), Vector2(10, 3), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponHolder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(3.03143, 3.24901, 0.594604, 1),
+"update": 0,
+"values": [0.0, -0.174533, 1.0472, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"TryApplyDamage"
+}, {
+"args": [],
+"method": &"ResetAttack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6nptt"]
+_data = {
+"attackAnimL": SubResource("Animation_35k5h"),
+"attackAnimR": SubResource("Animation_s2wly")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1igu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_se8p0")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_v284g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kcqtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iq4tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fmois")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_etfax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sybi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_34j6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ohmqa")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71lso"]
+radius = 100.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_4nqxf"]
+properties/0/path = NodePath("Movement:syncPosition")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_djj4a"]
+font_size = 10
+
+[node name="KnightNPC" type="CharacterBody2D"]
+light_mask = 2
+visibility_layer = 3
+collision_layer = 2
+collision_mask = 3
+input_pickable = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ryl4w")
+metadata/team = 1
+metadata/ID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 7)
+shape = SubResource("CircleShape2D_wtlbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6nptt")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p1igu")
+animation = &"Run"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AutoHeal" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="StateDecisionTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="MultiSyncCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="ShoppingTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Vision" type="CharacterBody2D" parent="."]
+script = ExtResource("11_7n5ec")
+
+[node name="VisionCircle" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionCircle"]
+shape = SubResource("CircleShape2D_71lso")
+
+[node name="Health" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("11_v5yak")]
+maxHealth = 20
+inventory = NodePath("../Inventory")
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("brain", "navAgent", "moveStuckTimer", "bodyAnimation")]
+script = ExtResource("13_0se4r")
+brain = NodePath("..")
+navAgent = NodePath("../NavigationAgent2D")
+moveStuckTimer = NodePath("MoveStuckTimer")
+bodyAnimation = NodePath("../AnimatedSprite2D")
+
+[node name="MoveStuckTimer" type="Timer" parent="Movement"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="PathfindToTarget" type="Timer" parent="Movement"]
+wait_time = 0.5
+
+[node name="WeaponHolder" type="Sprite2D" parent="."]
+position = Vector2(5, 2)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_vf03g")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.1
+delta_interval = 0.1
+replication_config = SubResource("SceneReplicationConfig_4nqxf")
+public_visibility = false
+
+[node name="Name" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 51.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+text = "Hero Name"
+label_settings = SubResource("LabelSettings_djj4a")
+horizontal_alignment = 1
+
+[node name="VisibilityDetection" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-20, -20, 40, 40)
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("14_bxpsq")
+
+[connection signal="input_event" from="." to="." method="OnCharacterClick"]
+[connection signal="timeout" from="VisionTimer" to="Vision" method="OnVisionTimeout"]
+[connection signal="timeout" from="AutoHeal" to="Health" method="OnAutoHealCountdown"]
+[connection signal="timeout" from="MultiSyncCheck" to="." method="OnSyncCheckup"]

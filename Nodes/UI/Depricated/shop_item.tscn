@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d1usiaep0hdlm"]
+
+[node name="ShopItem" type="GridContainer"]
+columns = 5
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Item Name"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="BuyOrder" type="Label" parent="."]
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Buy Order"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="BuyPrice" type="Label" parent="."]
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Buy Price"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="SellOrder" type="Label" parent="."]
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Sell Order"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="SellPrice" type="Label" parent="."]
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+text = "Sell Price"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://hxvfi6lk0qsn"]
+
+[ext_resource type="Texture2D" uid="uid://dovprkxmcye7h" path="res://Sprites/Items/Loot/hide_1.png" id="1_7yihw"]
+[ext_resource type="Script" path="res://scripts/UI/CraftableItem.cs" id="2_k1tqs"]
+
+[node name="Craftable" type="Button"]
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 23
+text = "Test Item"
+icon = ExtResource("1_7yihw")
+script = ExtResource("2_k1tqs")

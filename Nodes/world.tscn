@@ -1,0 +1,496 @@
+[gd_scene load_steps=45 format=3 uid="uid://ylkjkxtvnlkp"]
+
+[ext_resource type="PackedScene" uid="uid://bot0d0g7cqgm0" path="res://Nodes/terrain.tscn" id="1_r0esv"]
+[ext_resource type="Script" path="res://scripts/SceneManager.cs" id="1_x7ugc"]
+[ext_resource type="PackedScene" uid="uid://daufveqld8dfi" path="res://Nodes/elf_player_test.tscn" id="3_tihjr"]
+[ext_resource type="PackedScene" uid="uid://bvo14s4u2h5ht" path="res://Nodes/DebugUI.tscn" id="5_02gm6"]
+[ext_resource type="Texture2D" uid="uid://cu1m1xaphw8h8" path="res://Sprites/UI/market.png" id="5_vdjft"]
+[ext_resource type="PackedScene" uid="uid://cm6oposft6638" path="res://Nodes/jip_sync_handler.tscn" id="6_je3qg"]
+[ext_resource type="Texture2D" uid="uid://drkiwrgq35s5h" path="res://Sprites/UI/storefront_icon.png" id="6_keqvy"]
+[ext_resource type="PackedScene" uid="uid://bjbw4vcfba4k" path="res://Nodes/UI/Depricated/global_shop.tscn" id="6_tamtl"]
+[ext_resource type="Texture2D" uid="uid://xld1vuh28qhy" path="res://Sprites/UI/storeArmory_icon.png" id="7_dy6jq"]
+[ext_resource type="PackedScene" uid="uid://d354i7mfkftsr" path="res://Nodes/UI/shopInfoPanel.tscn" id="8_ruqc1"]
+[ext_resource type="Script" path="res://scripts/Item/Item.cs" id="9_2jih0"]
+[ext_resource type="PackedScene" uid="uid://bxktvwusu6ivb" path="res://Nodes/UI/Depricated/trade_manager.tscn" id="9_b826g"]
+[ext_resource type="Texture2D" uid="uid://bwa0kg1nuoasn" path="res://Sprites/Items/Coin/coin_anim_f0.png" id="10_e4nma"]
+[ext_resource type="PackedScene" uid="uid://ctshfka2g7wg5" path="res://Nodes/sign.tscn" id="11_p8bxd"]
+[ext_resource type="Texture2D" uid="uid://wsisnohv2v2h" path="res://Sprites/Items/Coin/coin_anim_f1.png" id="11_w6qic"]
+[ext_resource type="Texture2D" uid="uid://d1yb4uw55cvmd" path="res://Sprites/Items/Coin/coin_anim_f2.png" id="12_makwg"]
+[ext_resource type="Texture2D" uid="uid://b8ja480q2aplt" path="res://Sprites/Items/Coin/coin_anim_f3.png" id="13_gaqdf"]
+[ext_resource type="PackedScene" uid="uid://b3sa7w7400fat" path="res://Nodes/UI/crafting.tscn" id="15_roroo"]
+[ext_resource type="PackedScene" uid="uid://bb2a1c3daqam7" path="res://Nodes/Mobs/knight_hero.tscn" id="17_63xol"]
+[ext_resource type="PackedScene" uid="uid://t1vf5taai4b6" path="res://Nodes/Mobs/lizard_monster.tscn" id="18_5506t"]
+[ext_resource type="PackedScene" uid="uid://csjtfs3kl70rd" path="res://Nodes/shop_front.tscn" id="19_0x7mc"]
+[ext_resource type="PackedScene" uid="uid://bph5xmv7nxohd" path="res://Nodes/MobSpawners/lizard_spawner.tscn" id="19_ne23i"]
+[ext_resource type="PackedScene" uid="uid://lrs3rxhnkkg8" path="res://Nodes/shop_armory.tscn" id="20_o3oqs"]
+[ext_resource type="PackedScene" uid="uid://b6c5fienf1p13" path="res://Nodes/Mobs/skeleton_monster.tscn" id="22_pjucj"]
+[ext_resource type="PackedScene" uid="uid://tkum0gtsuu72" path="res://Nodes/MobSpawners/skeleton_spawner.tscn" id="23_hau16"]
+[ext_resource type="Texture2D" uid="uid://dovprkxmcye7h" path="res://Sprites/Items/Loot/hide_1.png" id="23_of0ty"]
+[ext_resource type="PackedScene" uid="uid://dn7qcf32oubl0" path="res://Nodes/Mobs/orc_monster.tscn" id="24_1eq61"]
+[ext_resource type="Texture2D" uid="uid://e3v67f2c3nb8" path="res://Sprites/Items/Loot/lizard_tail_1.png" id="24_l6b4d"]
+[ext_resource type="PackedScene" uid="uid://dqbkpybxeh22l" path="res://Nodes/MobSpawners/orc_spawner.tscn" id="25_7n241"]
+[ext_resource type="Texture2D" uid="uid://cnyx8nlhrpeqj" path="res://Sprites/Items/Armors/hide_armor.png" id="25_fmk3u"]
+[ext_resource type="Texture2D" uid="uid://c7e8gxqs75nfj" path="res://Sprites/Items/Loot/bone_1.PNG" id="26_5pm0k"]
+[ext_resource type="Texture2D" uid="uid://bru01n535bjyj" path="res://Sprites/Items/Loot/bone_meal_1.png" id="27_bhidx"]
+[ext_resource type="Texture2D" uid="uid://ducqhdtgo7htp" path="res://Sprites/Items/Loot/bone_armor_1.png" id="28_n1355"]
+[ext_resource type="Texture2D" uid="uid://do2us5qvaisg4" path="res://Sprites/Items/Loot/water_1.png" id="29_np6hq"]
+[ext_resource type="Texture2D" uid="uid://c8hovqbady7tj" path="res://Sprites/Items/Loot/perl_1.PNG" id="30_8gqxp"]
+[ext_resource type="Texture2D" uid="uid://c4rtrk1o53l1g" path="res://Sprites/Items/Loot/weak_potion_1.png" id="31_7vflg"]
+[ext_resource type="Texture2D" uid="uid://clumfdujxb0dj" path="res://Sprites/Items/Loot/basic_potion_1.png" id="32_uvyyg"]
+[ext_resource type="Texture2D" uid="uid://d2a6ofkpc0et4" path="res://Sprites/Items/Loot/wood_1.PNG" id="33_gxfcx"]
+[ext_resource type="Texture2D" uid="uid://c0o7i7nhrjcx1" path="res://Sprites/Items/Loot/wood_club_1.PNG" id="34_iwbqw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhrmp"]
+atlas = ExtResource("6_keqvy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_7ey3v"]
+frames = 4
+speed_scale = 8.0
+frame_0/texture = ExtResource("10_e4nma")
+frame_1/texture = ExtResource("11_w6qic")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("12_makwg")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("13_gaqdf")
+frame_3/duration = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4bl8"]
+size = Vector2(400, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t55u8"]
+size = Vector2(178, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s80cg"]
+size = Vector2(97, 95)
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("ShopFrontRequestButton")]
+position = Vector2(0, 1)
+script = ExtResource("1_x7ugc")
+ShopFrontRequestButton = NodePath("ParallaxBackground/CreateStorefront")
+playerScene = ExtResource("3_tihjr")
+heroIDs = PackedInt32Array(1)
+MobLairs = PackedInt32Array(100, 101, 102)
+
+[node name="Terrain" parent="." instance=ExtResource("1_r0esv")]
+
+[node name="HeroSpawnCountdown" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="MonsterLairCountdown" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="GridContainer" parent="ParallaxBackground" instance=ExtResource("5_02gm6")]
+visible = false
+
+[node name="GlobalShopButton" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("5_vdjft")
+flat = true
+expand_icon = true
+
+[node name="CreateStorefront" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -56.0
+offset_right = -64.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = SubResource("AtlasTexture_mhrmp")
+flat = true
+expand_icon = true
+
+[node name="CreateStoreArmory" type="Button" parent="ParallaxBackground"]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -56.0
+offset_right = -112.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("7_dy6jq")
+flat = true
+expand_icon = true
+
+[node name="GlobalShop" parent="ParallaxBackground" instance=ExtResource("6_tamtl")]
+visible = false
+
+[node name="ShopUI" parent="ParallaxBackground" instance=ExtResource("8_ruqc1")]
+visible = false
+
+[node name="TradeManager" parent="ParallaxBackground" instance=ExtResource("9_b826g")]
+visible = false
+
+[node name="CoinDisplay" type="BoxContainer" parent="ParallaxBackground"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 32.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Money" type="Label" parent="ParallaxBackground/CoinDisplay"]
+layout_mode = 2
+text = "123456789"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/CoinDisplay"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_7ey3v")
+expand_mode = 2
+
+[node name="ArmoryCrafting" parent="ParallaxBackground" instance=ExtResource("15_roroo")]
+visible = false
+craftableItems = PackedInt32Array(2, 5, 8, 9, 11)
+
+[node name="Home" type="Node2D" parent="."]
+position = Vector2(122, 178)
+
+[node name="HomeWanderArea" type="Area2D" parent="Home"]
+position = Vector2(-24, -102)
+collision_layer = 7
+collision_mask = 7
+monitoring = false
+
+[node name="WanderAreaColl" type="CollisionShape2D" parent="Home/HomeWanderArea"]
+position = Vector2(93, 100)
+shape = SubResource("RectangleShape2D_k4bl8")
+
+[node name="0" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(-76, 126)
+
+[node name="1" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(69, 124)
+
+[node name="2" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(212, 127)
+
+[node name="3" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(-76, -129)
+
+[node name="4" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(64, -129)
+
+[node name="5" type="Node2D" parent="Home" groups=["PlayerSpawnPoints"]]
+position = Vector2(214, -129)
+
+[node name="MobSpawnLocs" type="Node2D" parent="."]
+position = Vector2(805, 170)
+
+[node name="Area1" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-530, 364)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area1"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area2" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-57, -76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area2"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area3" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-18, 278)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area3"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area4" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(403, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area4"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area5" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(465, -68)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area5"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area6" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(453, 546)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area6"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="Area7" type="Area2D" parent="MobSpawnLocs" groups=["MobAreas"]]
+position = Vector2(-184, 567)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLocs/Area7"]
+shape = SubResource("RectangleShape2D_t55u8")
+
+[node name="JipSyncHandler" parent="." instance=ExtResource("6_je3qg")]
+spawnableDictionary = {
+0: ExtResource("3_tihjr"),
+1: ExtResource("17_63xol"),
+2: ExtResource("18_5506t"),
+3: ExtResource("22_pjucj"),
+4: ExtResource("24_1eq61"),
+100: ExtResource("19_ne23i"),
+101: ExtResource("23_hau16"),
+102: ExtResource("25_7n241"),
+200: ExtResource("19_0x7mc"),
+201: ExtResource("20_o3oqs")
+}
+
+[node name="ItemHolder" type="Node" parent="."]
+
+[node name="Hide" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Hide"
+Price = 4
+Sprite = ExtResource("23_of0ty")
+
+[node name="LizardTail" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Lizard Tail"
+ID = 1
+Price = 6
+Sprite = ExtResource("24_l6b4d")
+
+[node name="HideArmor" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Hide Armor"
+ID = 2
+Price = 6
+EquipmentType = 1
+Durability = 10
+DamageProtection = 2
+Tier = 1
+Sprite = ExtResource("25_fmk3u")
+craftingRecipie = PackedInt32Array(0, 6)
+
+[node name="Bone" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Bone"
+ID = 3
+Price = 5
+Sprite = ExtResource("26_5pm0k")
+
+[node name="BoneMeal" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Bone Meal"
+ID = 4
+Price = 3
+Sprite = ExtResource("27_bhidx")
+
+[node name="BoneArmor" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Bone Armor"
+ID = 5
+Price = 9
+EquipmentType = 1
+Durability = 15
+DamageProtection = 3
+Tier = 1
+Sprite = ExtResource("28_n1355")
+craftingRecipie = PackedInt32Array(3, 2)
+
+[node name="Water" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Water"
+ID = 6
+Price = 2
+Sprite = ExtResource("29_np6hq")
+
+[node name="Perl" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Perl"
+ID = 7
+Price = 2
+Sprite = ExtResource("30_8gqxp")
+
+[node name="WeakPotion" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Weak Potion"
+ID = 8
+Price = 5
+EquipmentType = 3
+BaseDamage = 5
+Tier = 1
+Sprite = ExtResource("31_7vflg")
+craftingRecipie = PackedInt32Array(6, 4)
+
+[node name="BasicPotion" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Basic Potion"
+ID = 9
+Price = 7
+EquipmentType = 3
+BaseDamage = 10
+Tier = 1
+Sprite = ExtResource("32_uvyyg")
+craftingRecipie = PackedInt32Array(6, 1)
+
+[node name="Wood" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Wood"
+ID = 10
+Price = 3
+Sprite = ExtResource("33_gxfcx")
+
+[node name="WoodClub" type="Node" parent="ItemHolder"]
+script = ExtResource("9_2jih0")
+ItemName = "Wood Club"
+ID = 11
+Price = 3
+EquipmentType = 2
+BaseDamage = 2
+Tier = 1
+Sprite = ExtResource("34_iwbqw")
+craftingRecipie = PackedInt32Array(10, 4)
+
+[node name="GlobalShopPos" type="Node2D" parent="."]
+position = Vector2(2, 208)
+
+[node name="GlobalFleePosition" type="Node2D" parent="."]
+position = Vector2(20, 146)
+
+[node name="Shops" type="Node" parent="."]
+
+[node name="ShopSign1" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(43, 238)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign1"]
+position = Vector2(1, 69)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign1/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign2" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(192, 238)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign2"]
+position = Vector2(-3, 69)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign2/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign3" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(344, 238)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign3"]
+position = Vector2(-12, 69)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign3/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign4" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(43, 109)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign4"]
+position = Vector2(289, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign4/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign5" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(192, 109)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign5"]
+position = Vector2(-3, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign5/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[node name="ShopSign6" parent="Shops" instance=ExtResource("11_p8bxd")]
+position = Vector2(344, 109)
+animPlayer = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": null
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+interactionSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -14),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://Sprites/PixelKeys/Black/pxkb_e.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="PlacableArea" type="Area2D" parent="Shops/ShopSign6"]
+position = Vector2(-300, -58)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shops/ShopSign6/PlacableArea"]
+position = Vector2(3.5, -2.5)
+shape = SubResource("RectangleShape2D_s80cg")
+
+[connection signal="timeout" from="HeroSpawnCountdown" to="." method="OnHeroTimer"]
+[connection signal="timeout" from="MonsterLairCountdown" to="." method="OnMobLairTimer"]
+[connection signal="pressed" from="ParallaxBackground/GlobalShopButton" to="ParallaxBackground/GlobalShop" method="ToggleVisibility"]
+[connection signal="pressed" from="ParallaxBackground/CreateStorefront" to="." method="HandleShopObjectPlaceRequest" binds= [200]]
+[connection signal="pressed" from="ParallaxBackground/CreateStoreArmory" to="." method="HandleShopObjectPlaceRequest" binds= [201]]
+[connection signal="body_entered" from="Home/HomeWanderArea" to="." method="AreaTestFunc"]

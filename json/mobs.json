@@ -1,0 +1,24 @@
+{
+	"0":{
+		"MobName": "Knight",
+		"IsHero": true,
+		"LooseDistance": 150,
+		"Health": 20,
+		"MovementSpeed": 55,
+		"DropItemIDs": [],
+		"DropItemCounts": [],
+		"RunAnimFolder": "Sprites/NPC/Knight/run",
+		"IdleAnimFolder": "Sprites/NPC/Knight/idle"
+	},
+	"1":{
+		"MobName": "Lizard",
+		"IsHero": false,
+		"LooseDistance": 150,
+		"Health": 4,
+		"MovementSpeed": 40,
+		"DropItemIDs": [0,1],
+		"DropItemCounts": [1,1],
+		"RunAnimFolder": "Sprites/NPC/Lizard/run",
+		"IdleAnimFolder": "Sprites/NPC/Lizard/idle"
+	}
+}

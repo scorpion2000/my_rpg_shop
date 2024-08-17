@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://lrs3rxhnkkg8"]
+
+[ext_resource type="Script" path="res://scripts_v2/ShopObject.cs" id="1_nlwrr"]
+[ext_resource type="Texture2D" uid="uid://dqx4l6lhovljp" path="res://Sprites/Objects/crafting_table.png" id="2_qx1il"]
+[ext_resource type="Texture2D" uid="uid://ylybykxw44ie" path="res://Sprites/PixelKeys/Black/pxkb_e.png" id="3_iyyag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1g2ob"]
+size = Vector2(14, 11)
+
+[sub_resource type="Animation" id="Animation_o3ce3"]
+resource_name = "Interaction"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, -14), Vector2(0, -11), Vector2(0, -14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cva8q"]
+_data = {
+"Interaction": SubResource("Animation_o3ce3")
+}
+
+[node name="Armory" type="CharacterBody2D" node_paths=PackedStringArray("animPlayer", "interactionSprite")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_nlwrr")
+InteractableNodeName = "ArmoryCrafting"
+animPlayer = NodePath("AnimationPlayer")
+interactionSprite = NodePath("InteractionSprite")
+metadata/ID = 201
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_1g2ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qx1il")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cva8q")
+}
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_iyyag")

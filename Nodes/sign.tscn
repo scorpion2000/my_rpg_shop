@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctshfka2g7wg5"]
+
+[ext_resource type="Texture2D" uid="uid://bdxhnbqdgcsaj" path="res://Sprites/Objects/Sign.png" id="1_tug1h"]
+[ext_resource type="Script" path="res://scripts_v2/Shop.cs" id="1_xmnkh"]
+[ext_resource type="PackedScene" uid="uid://csjtfs3kl70rd" path="res://Nodes/shop_front.tscn" id="2_mdu1i"]
+[ext_resource type="Texture2D" uid="uid://ylybykxw44ie" path="res://Sprites/PixelKeys/Black/pxkb_e.png" id="4_ciq8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os8uo"]
+size = Vector2(9, 9)
+
+[sub_resource type="Animation" id="Animation_o3ce3"]
+resource_name = "Interaction"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, -14), Vector2(0, -11), Vector2(0, -14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cva8q"]
+_data = {
+"Interaction": SubResource("Animation_o3ce3")
+}
+
+[node name="Sign" type="StaticBody2D" node_paths=PackedStringArray("animPlayer", "interactionSprite")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_xmnkh")
+animPlayer = NodePath("AnimationPlayer")
+interactionSprite = NodePath("InteractionSprite")
+canPlayerInteract = true
+shopFrontScene = ExtResource("2_mdu1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_os8uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tug1h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cva8q")
+}
+
+[node name="InteractionSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ciq8r")

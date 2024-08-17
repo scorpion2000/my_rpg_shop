@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvtloaji5b7im"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pl1jp"]
+line_spacing = 0.0
+font_size = 12
+
+[node name="Item" type="GridContainer"]
+columns = 3
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Dickbutt"
+label_settings = SubResource("LabelSettings_pl1jp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_pl1jp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_pl1jp")
+horizontal_alignment = 1
+vertical_alignment = 1

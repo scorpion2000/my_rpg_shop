@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm6oposft6638"]
+
+[ext_resource type="Script" path="res://scripts_v2/JipSyncronyzer.cs" id="1_v76kx"]
+[ext_resource type="PackedScene" uid="uid://daufveqld8dfi" path="res://Nodes/elf_player_test.tscn" id="2_vilqg"]
+
+[node name="JipSyncHandler" type="Node"]
+script = ExtResource("1_v76kx")
+playerScene = ExtResource("2_vilqg")

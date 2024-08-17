@@ -1,0 +1,168 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxktvwusu6ivb"]
+
+[ext_resource type="Script" path="res://scripts/TradeManager.cs" id="1_6vow7"]
+[ext_resource type="PackedScene" uid="uid://d3k7ea8864bv8" path="res://Nodes/UI/Depricated/trade_item.tscn" id="2_4bgyw"]
+[ext_resource type="PackedScene" uid="uid://cbrd8wn6wr3xa" path="res://Nodes/UI/Depricated/shop_inventory_item.tscn" id="3_s7qhw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvdcr"]
+line_spacing = 0.0
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8t14"]
+font_size = 24
+
+[node name="TradeManager" type="Control" node_paths=PackedStringArray("grid", "inventoryContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6vow7")
+grid = NodePath("Panel/GridContainer")
+tradeItem = ExtResource("2_4bgyw")
+shopInventoryItem = ExtResource("3_s7qhw")
+inventoryContainer = NodePath("Panel/GridContainer2")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(900, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -225.0
+offset_right = -25.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="GridContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+columns = 6
+
+[node name="Item Texture" type="TextureRect" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="Item Name" type="Label" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(100, 24)
+layout_mode = 2
+text = "Item Name"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Item Name2" type="Label" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Order"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Item Name3" type="Label" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Price"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Item Name4" type="Label" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sell Order"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Item Name5" type="Label" parent="Panel/GridContainer/Title"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sell Price"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 595.0
+offset_top = 27.0
+offset_right = 783.0
+offset_bottom = 63.0
+text = "Shop Inventory"
+label_settings = SubResource("LabelSettings_s8t14")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -166.0
+offset_right = 425.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit"
+
+[node name="Panel" type="Panel" parent="Panel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Panel/Button" to="." method="ExitButton"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqbkpybxeh22l"]
+
+[ext_resource type="Script" path="res://scripts_v2/MobSpawner.cs" id="1_4wgpc"]
+[ext_resource type="Texture2D" uid="uid://dkvh2yem0qd3c" path="res://Sprites/Items/crate.png" id="2_5ge1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mstq3"]
+size = Vector2(75, 75)
+
+[node name="LizardSpawner" type="Node2D"]
+script = ExtResource("1_4wgpc")
+mobID = 4
+maxMobs = 6
+metadata/ID = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ge1g")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+shape = SubResource("RectangleShape2D_mstq3")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

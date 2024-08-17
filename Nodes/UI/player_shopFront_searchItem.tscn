@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbsbpnuqe7fon"]
+
+[ext_resource type="Texture2D" uid="uid://c8hovqbady7tj" path="res://Sprites/Items/Loot/perl_1.PNG" id="1_aw4od"]
+[ext_resource type="Script" path="res://scripts_v2/UI/ShopFrontSearchItem.cs" id="1_r3ak4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxl6c"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.458824, 0.0980392, 0.823529)
+border_color = Color(0, 0.639216, 0.129412, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqp56"]
+bg_color = Color(1, 0.458824, 0.0980392, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u71iv"]
+bg_color = Color(0.713726, 0.305882, 0, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_356k6"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0, 0.980392, 0.439216, 0.823529)
+border_color = Color(0, 0.639216, 0.129412, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cslbf"]
+bg_color = Color(0, 0.980392, 0.439216, 0.823529)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54mby"]
+bg_color = Color(0, 0.756863, 0.333333, 0.823529)
+
+[node name="Item" type="HBoxContainer" node_paths=PackedStringArray("purchaseButton", "sellButton", "sprite", "itemName")]
+custom_minimum_size = Vector2(225, 20)
+offset_right = 225.0
+offset_bottom = 20.0
+script = ExtResource("1_r3ak4")
+purchaseButton = NodePath("PurchaseButton")
+sellButton = NodePath("SellButton")
+sprite = NodePath("TextureRect")
+itemName = NodePath("RichTextLabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_aw4od")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Perl"
+
+[node name="PurchaseButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_mxl6c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqp56")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u71iv")
+text = "Buy"
+
+[node name="SellButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_356k6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cslbf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_54mby")
+text = "Sell"

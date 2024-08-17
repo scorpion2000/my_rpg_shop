@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3k7ea8864bv8"]
+
+[ext_resource type="Script" path="res://scripts/UI/ShopItemUI.cs" id="1_mpptw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvdcr"]
+font_size = 13
+
+[sub_resource type="SystemFont" id="SystemFont_cwbaw"]
+font_names = PackedStringArray("Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tps78"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 0.784314)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="TradeItem" type="GridContainer" node_paths=PackedStringArray("newBuyVolume", "newBuyPrice", "newSellVolume", "newSellPrice")]
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+columns = 6
+script = ExtResource("1_mpptw")
+newBuyVolume = NodePath("Buy Order")
+newBuyPrice = NodePath("Buy Price")
+newSellVolume = NodePath("Sell Order")
+newSellPrice = NodePath("Sell Price")
+
+[node name="Item Texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 4
+
+[node name="Item Name" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 24)
+layout_mode = 2
+text = "Item Name"
+label_settings = SubResource("LabelSettings_jvdcr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Buy Order" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter desired purchase amount.
+Local heroes will enter your shop and attempt to
+sell you this item, provided your purchase order
+hasn't run out!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_cwbaw")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_tps78")
+placeholder_text = "Buy"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[node name="Buy Price" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter the desired purchase price.
+Note that heroes hate being ripped off.
+Try to keep the purchase price above the
+global purchase price. Make sure to keep
+an eye on local competition!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_cwbaw")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_tps78")
+placeholder_text = "Coin"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[node name="Sell Order" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter desired purchase amount.
+Local heroes will enter your shop and
+attempt to buy this item from your shop,
+provided your stock hasn't run out!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_cwbaw")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_tps78")
+placeholder_text = "Sell"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[node name="Sell Price" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter the desired sell price.
+Note that heroes hate being ripped off.
+Try to keep the sell price below the global
+sell price. Make sure to keep an eye on local
+competition!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_cwbaw")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tps78")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_tps78")
+placeholder_text = "Coin"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[connection signal="text_changed" from="Buy Order" to="." method="SimpleNumberInputFilter" binds= ["Buy Order"]]
+[connection signal="text_changed" from="Buy Price" to="." method="SimpleNumberInputFilter" binds= ["Buy Price"]]
+[connection signal="text_changed" from="Sell Order" to="." method="SimpleNumberInputFilter" binds= ["Sell Order"]]
+[connection signal="text_changed" from="Sell Price" to="." method="SimpleNumberInputFilter" binds= ["Sell Price"]]

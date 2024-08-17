@@ -1,0 +1,268 @@
+[gd_scene load_steps=20 format=3 uid="uid://csb1m2a4hp2xv"]
+
+[ext_resource type="Texture2D" uid="uid://clumfdujxb0dj" path="res://Sprites/Items/Loot/basic_potion_1.png" id="1_bg7g6"]
+[ext_resource type="Script" path="res://scripts_v2/UI/ShopFrontItem.cs" id="1_yol0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uiyt"]
+bg_color = Color(0, 0, 0.0156863, 0.294118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1twp"]
+content_margin_left = 5.0
+bg_color = Color(0.0117647, 0, 0.0941176, 0.94902)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grxvb"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71csh"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7rom"]
+bg_color = Color(0.713726, 0.666667, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="SystemFont" id="SystemFont_uy1gn"]
+font_names = PackedStringArray("Courier New")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs5ep"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8povl"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7ag4"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdv6r"]
+bg_color = Color(0.713726, 0.666667, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axbb4"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81q10"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv7yw"]
+bg_color = Color(0.713726, 0.666667, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ro26"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu00y"]
+bg_color = Color(0.854902, 0.8, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gik2"]
+bg_color = Color(0.713726, 0.666667, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgl5c"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.717647, 0.0823529, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="ShopfrontItem" type="Panel" node_paths=PackedStringArray("sprite", "itemDisplayName", "Volume", "Price", "ignoreVolume", "deleteButton", "addVolume", "subVolume", "addPrice", "subPrice")]
+custom_minimum_size = Vector2(330, 23)
+offset_bottom = 23.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3uiyt")
+script = ExtResource("1_yol0e")
+sprite = NodePath("HBoxContainer/TextureRect")
+itemDisplayName = NodePath("RichTextLabel")
+Volume = NodePath("HBoxContainer/Control/Volume")
+Price = NodePath("HBoxContainer/HBoxContainer/Price")
+ignoreVolume = NodePath("HBoxContainer/Auto")
+deleteButton = NodePath("HBoxContainer/Button")
+addVolume = NodePath("HBoxContainer/Control/Positive")
+subVolume = NodePath("HBoxContainer/Control/Negative")
+addPrice = NodePath("HBoxContainer/HBoxContainer/Positive2")
+subPrice = NodePath("HBoxContainer/HBoxContainer/Negative2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+offset_left = 30.0
+offset_right = 360.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_l1twp")
+bbcode_enabled = true
+text = "Basic Potion"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_bg7g6")
+expand_mode = 1
+
+[node name="Control" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Negative" type="Button" parent="HBoxContainer/Control"]
+custom_minimum_size = Vector2(15, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_grxvb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_71csh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i7rom")
+text = "-"
+
+[node name="Volume" type="LineEdit" parent="HBoxContainer/Control"]
+custom_minimum_size = Vector2(60, 23)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter desired purchase amount.
+Local heroes will enter your shop and attempt to
+sell you this item, provided your purchase order
+hasn't run out!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_uy1gn")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_fs5ep")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fs5ep")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_fs5ep")
+placeholder_text = "Volume"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[node name="Positive" type="Button" parent="HBoxContainer/Control"]
+custom_minimum_size = Vector2(15, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8povl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y7ag4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qdv6r")
+text = "+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Negative2" type="Button" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_axbb4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_81q10")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nv7yw")
+text = "-"
+
+[node name="Price" type="LineEdit" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 23)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+tooltip_text = "Enter the desired purchase price.
+Note that heroes hate being ripped off.
+Try to keep the purchase price above the
+global purchase price. Make sure to keep
+an eye on local competition!"
+theme_override_constants/minimum_character_width = 5
+theme_override_fonts/font = SubResource("SystemFont_uy1gn")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_fs5ep")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fs5ep")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_fs5ep")
+placeholder_text = "Coin"
+alignment = 1
+max_length = 4
+select_all_on_focus = true
+
+[node name="Positive2" type="Button" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 23)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ro26")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mu00y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4gik2")
+text = "+"
+
+[node name="Auto" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Ignore volume"
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Auto"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_cgl5c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cgl5c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cgl5c")
+text = "X"
